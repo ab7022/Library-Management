@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Library Organizer</title>
+  <link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <script src="available_books.js"></script>
+  <script src="js/admin.js" defer></script>
+  <script src=""></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body onload = displayAvailableBooks(),createBookSuggestion()>
+  <header>
+    <h1>Welcome Abdul!</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="admin.html" class="active">Admin Dashboard</a></li>
+      <li><a href="library.html">Library Collection</a></li>
+      <li><a href="borrowers.html">Borrowers</a></li>
+      <li><a href="index">Logout</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Admin Dashboard</h2>
+    <div class="card">
+        <button class="admin-btn" id="add-books">Add Books</button>
+        <button class="admin-btn" id="manage-books">Manage Books</button>
+        <button class="admin-btn" id="manage-borrowers">Manage Borrowers</button>
+    </div>
+    <div id="card1">
+      <h3>Add New Book</h3>
+      <form id="addBookForm" action="/admin" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+    
+    <div id="card2">
+        <input type="text" name="book-search" id="book-search" placeholder="Search Here" required 
+        list="book-dropdown">
+        <datalist id="book-dropdown"></datalist>
+        <button onclick="searchBooks()" id="btn-search">Search</button> 
+        <div class="space"></div>
+        <div class="status-container"> <!-- New container for the status message -->
+            <p class="status-message"></p>
+        </div>
+        <h2>Available Books</h2>
+       <!-- Table to display available books -->
+<table>
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Title</th>
+        <th class="author">Author</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% books.forEach(function(book, index) { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= book.title %></td>
+                <td class="author"><%= book.author %></td>
+                <td class="<%= book.status === 'Borrowed' ? 'statusTrue' : 'statusFalse' %>"><%= book.status %></td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+    </tbody>
+  </table>
+</div>
+        
+
+<div id="card3">
+    <h2>Book Return</h2>
+    <table id="borrowedBooksTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Borrower Name</th>
+          <th>Email id</th>
+          <th>Book Title</th>
+          <th>Return Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Borrower 1</td>
+          <td>Bayees1@gmail.com</td>
+          <td>Book Title 1</td>
+          <td>2023-08-15</td>
+          <td>
+            <button class="return-btn">Return</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Borrower 2</td>
+          <td>ulfaabu@gmail.com</td>
+          <td>Book Title 2</td>
+          <td>2023-08-20</td>
+          <td>
+            <button class="return-btn">Return</button>
+          </td>
+        </tr>
+        <!-- Rows for borrowed books will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+  
+  </main>
+  <footer>
+    <p>&copy; 2023 Library Organizer. All rights reserved.</p>
+  </footer>
+</body>
+</html>

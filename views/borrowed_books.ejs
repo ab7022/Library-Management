@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <script src="js/script.js" defer></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+  </head>
+  <body onload="createBookSuggestion()">
+    <header>
+      <h1>Welcome to Our Library</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index">Home</a></li>
+        <li><a href="available_books">Available Books</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h2>Borrowe Books</h2>
+      
+      <form action="/form" method="post">
+        <label for="book-title">Book Title:</label>
+        <input
+          type="text"
+          id="book-title"
+          name="title"
+          required
+          list="book-dropdown"
+        />
+        <datalist id="book-dropdown"></datalist>
+
+        <label for="author-name">Author Name:</label>
+        <input type="text" id="author-name" name="author" required />
+
+        <label for="borrower">Your Name:</label>
+        <input type="text" id="borrower" name="borrower" required />
+
+        <label for="email-id">Email id:</label>
+        <input type="email" id="email-id" name="email-id" required />
+
+        <input type="submit" value="Submit" id="submit-btn">
+    </main>
+    <footer>
+      <p>&copy; 2023 Your Library. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Books</title>
+  <script src="js/available_books.js" defer></script>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <script src="js/script.js" defer></script>
+ 
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body onload="initializeBookSuggestions(); displayAvailableBooks(); createBookSuggestion();">
+
+  <header>
+    <h1>Welcome to Our Library</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/index">Home</a></li>
+      <li><a href="/form">Borrow Books</a></li>
+    </ul>
+  </nav>
+  <main>    
+    <div class="search-container">
+      <input type="text" name="title" id="title" placeholder="Search Here" required list="book-dropdown">
+      <datalist id="book-dropdown"></datalist>
+      <button onclick=searchBooks() id="btn-search">Search</button>
+    </div>
+  <div class="space"></div>
+  <div class="status-container"> <!-- New container for the status message -->
+    <p class="status-message"></p>
+  </div>
+    <h2>Available Books</h2>
+    <table>
+        <thead>
+          <tr>
+            <th>Sr.no</th>
+            <th>Title</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody id="book-list">
+          <% books.forEach(function(book,index){%>
+          <tr>
+            <td><%=index+1%></td>
+            <td><%=book.title%></td>
+            <td><%=book.author%></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+  </main>
+  <footer>
+    <p>&copy; 2023 Your Library. All rights reserved.</p>
+  </footer>
+</body>
+</html>
