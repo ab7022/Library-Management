@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node": "^20.5.0",
+    "nodemon": "^3.0.1"
+  },
+  "name": "library",
+  "version": "1.0.0",
+  "description": "i will be learning how to display the data,redirect the user,show diffrent error pages,save the data in json format and show the same data in next page etc... ",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Abdul Bayees",
+  "license": "ISC"
+}
