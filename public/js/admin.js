@@ -1,3 +1,4 @@
+//for hiding and displaying content
 const addBooksBtn = document.getElementById("add-books");
 const manageBooksBtn = document.getElementById("manage-books");
 const manageBorrowersBtn = document.getElementById("manage-borrowers");
@@ -23,10 +24,31 @@ manageBorrowersBtn.addEventListener("click", () => {
   card2.style.display = "none";
   card3.style.display = "block";
 });
-function Func() {
-    fetch("./sample.json")
-        .then((res) => {
-        return res.json();
-    })
-    .then((data) => console.log(data));
-}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const returnButtons = document.querySelectorAll('.return-btn');
+
+  returnButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      const borrowerId = button.dataset.borrowerId;
+
+      // Send a POST request to the server with the borrowerId to delete the entry
+      fetch('/return', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ borrowerId }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data); // Optional: Log the response from the server
+          // Reload the page to reflect the changes after deletion
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+  });
+});

@@ -1,0 +1,282 @@
+[
+  {
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll"
+  },
+  {
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy"
+  },
+  {
+    "title": "A Tale of Two Cities",
+    "author": "Charles Dickens"
+  },
+  {
+    "title": "The Brothers Karamazov",
+    "author": "Fyodor Dostoevsky"
+  },
+  {
+    "title": "Bridget Jones's Diary",
+    "author": "Helen Fielding"
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky"
+  },
+  {
+    "title": "The Count of Monte Cristo",
+    "author": "Alexandre Dumas"
+  },
+  {
+    "title": "Charlotte's Web",
+    "author": "E. B. White"
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert"
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker"
+  },
+  {
+    "title": "David Copperfield",
+    "author": "Charles Dickens"
+  },
+  {
+    "title": "Emma",
+    "author": "Jane Austen"
+  },
+  {
+    "title": "Ender's Game",
+    "author": "Orson Scott Card"
+  },
+  {
+    "title": "East of Eden",
+    "author": "John Steinbeck"
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury"
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley"
+  },
+  {
+    "title": "For Whom the Bell Tolls",
+    "author": "Ernest Hemingway"
+  },
+  {
+    "title": "Great Expectations",
+    "author": "Charles Dickens"
+  },
+  {
+    "title": "Gone with the Wind",
+    "author": "Margaret Mitchell"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck"
+  },
+  {
+    "title": "Hamlet",
+    "author": "William Shakespeare"
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling"
+  },
+  {
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien"
+  },
+  {
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood"
+  },
+  {
+    "title": "The Iliad",
+    "author": "Homer"
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë"
+  },
+  {
+    "title": "Journey to the Center of the Earth",
+    "author": "Jules Verne"
+  },
+  {
+    "title": "The Jungle Book",
+    "author": "Rudyard Kipling"
+  },
+  {
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien"
+  },
+  {
+    "title": "Les Misérables",
+    "author": "Victor Hugo"
+  },
+  {
+    "title": "Moby-Dick",
+    "author": "Herman Melville"
+  },
+  {
+    "title": "Metamorphosis",
+    "author": "Franz Kafka"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell"
+  },
+  {
+    "title": "Of Mice and Men",
+    "author": "John Steinbeck"
+  },
+  {
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez"
+  },
+  {
+    "title": "The Odyssey",
+    "author": "Homer"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde"
+  },
+  {
+    "title": "The Plague",
+    "author": "Albert Camus"
+  },
+  {
+    "title": "The Scarlet Letter",
+    "author": "Nathaniel Hawthorne"
+  },
+  {
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett"
+  },
+  {
+    "title": "The Sun Also Rises",
+    "author": "Ernest Hemingway"
+  },
+  {
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen"
+  },
+  {
+    "title": "Slaughterhouse-Five",
+    "author": "Kurt Vonnegut"
+  },
+  {
+    "title": "The Stranger",
+    "author": "Albert Camus"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee"
+  },
+  {
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson"
+  },
+  {
+    "title": "The Three Musketeers",
+    "author": "Alexandre Dumas"
+  },
+  {
+    "title": "The Time Machine",
+    "author": "H.G. Wells"
+  },
+  {
+    "title": "Ulysses",
+    "author": "James Joyce"
+  },
+  {
+    "title": "Uncle Tom's Cabin",
+    "author": "Harriet Beecher Stowe"
+  },
+  {
+    "title": "The Underground Railroad",
+    "author": "Colson Whitehead"
+  },
+  {
+    "title": "Vanity Fair",
+    "author": "William Makepeace Thackeray"
+  },
+  {
+    "title": "War and Peace",
+    "author": "Leo Tolstoy"
+  },
+  {
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë"
+  },
+  {
+    "title": "The War of the Worlds",
+    "author": "H.G. Wells"
+  },
+  {
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum"
+  },
+  {
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame"
+  },
+  {
+    "title": "Xenocide",
+    "author": "Orson Scott Card"
+  },
+  {
+    "title": "Xenophon's Anabasis",
+    "author": "Xenophon"
+  },
+  {
+    "title": "The Yearling",
+    "author": "Marjorie Kinnan Rawlings"
+  },
+  {
+    "title": "Youth",
+    "author": "J.M. Coetzee"
+  },
+  {
+    "title": "Zorba the Greek",
+    "author": "Nikos Kazantzakis"
+  },
+  {
+    "title": "Zen and the Art of Motorcycle Maintenance",
+    "author": "Robert M. Pirsig"
+  },
+  {
+    "title": "Z for Zachariah",
+    "author": "Robert C. O'Brien"
+  },
+  {
+    "title": "Haunting Adeline",
+    "author": "H.D Cartlon"
+  },
+  {
+    "title": "Twisted Love",
+    "author": "Ana Huang"
+  },
+  {
+    "title": "abx",
+    "author": "uk"
+  }
+]

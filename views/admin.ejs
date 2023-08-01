@@ -63,6 +63,7 @@
         <th>Title</th>
         <th class="author">Author</th>
         <th>Status</th>
+        
         <th>Action</th>
       </tr>
     </thead>
@@ -94,32 +95,28 @@
           <th>Borrower Name</th>
           <th>Email id</th>
           <th>Book Title</th>
+          <th>Order id</th>
           <th>Return Date</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Borrower 1</td>
-          <td>Bayees1@gmail.com</td>
-          <td>Book Title 1</td>
-          <td>2023-08-15</td>
-          <td>
-            <button class="return-btn">Return</button>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Borrower 2</td>
-          <td>ulfaabu@gmail.com</td>
-          <td>Book Title 2</td>
-          <td>2023-08-20</td>
-          <td>
-            <button class="return-btn">Return</button>
-          </td>
-        </tr>
-        <!-- Rows for borrowed books will be dynamically generated here -->
+        <% borrowers.forEach(function(borrower, index) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= borrower.borrower %></td>
+            <td><%= borrower['email-id'] %></td>
+            <td><%= borrower.title %></td>
+            <td><%= borrower.id %></td>
+            <td><%= borrower['due-date'] %></td>
+            <td>
+              <form action="/admin" method="post">
+                <input type="hidden" name="id" value="<%= borrower.id %>">
+                <button type="submit" class="return-btn">Return</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
       </tbody>
     </table>
   </div>

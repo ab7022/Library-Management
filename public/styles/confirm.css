@@ -1,0 +1,112 @@
+/* Reset some default styles for better consistency */
+body,
+h1,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Header Styles */
+header {
+  background-color: #003049;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 48px;
+  margin: 10px 20px 10px 20px;
+   
+}
+
+nav {
+  background-color: #003049;
+  text-align: center;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 20px;
+  /* margin-bottom: -21px; */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+nav a:hover {
+  background-color: #f77f00;
+}
+
+/* Main Content Styles */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.confirmation-message {
+  margin: 180px auto;
+  /* margin: 20.5%; */
+  width: 70%;
+  background-color: #e8e8e8;
+  color: #003049;
+  text-align: center;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-message h2 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.confirmation-message p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #003049;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

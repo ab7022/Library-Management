@@ -1,11 +1,20 @@
-/* Global Styles */
-body {
-    font-family: Arial, sans-serif;
+body,
+h1,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     color: #333;
 }
+
 
 /* Header Styles */
 header {
@@ -17,8 +26,14 @@ header {
 
 header h1 {
     font-size: 48px;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 20px 20px 30px 20px;
+
+}
+
+nav {
+    background-color: #003049;
+    text-align: center;
+    padding: 10px;
 }
 
 nav ul {
@@ -31,18 +46,25 @@ nav ul {
 
 nav li {
     margin: 0 20px;
+    margin-bottom: -21px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
     font-size: 20px;
+    padding: 10px 15px;
+
 }
 
-/* Hero Styles */
+nav a:hover {
+    background-color: #f77f00;
+}
+
+
 /* Hero Styles */
 .hero {
-   background-color: #e8e8e8;
+    background-color: #e8e8e8;
     color: #003049;
     text-align: center;
     padding: 100px 20px;
@@ -184,6 +206,7 @@ nav a {
     font-size: 18px;
     margin: 0;
 }
+
 footer {
     background-color: #003049;
     color: #fff;

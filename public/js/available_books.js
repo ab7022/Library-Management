@@ -1,17 +1,5 @@
 
 
-function initializeBookSuggestions() {
-  fetch("/data/book_suggestions.json") // Adjust the path to the correct location
-    .then((response) => response.json())
-    .then((data) => {
-      bookSuggestions = data; // Assign the fetched data to the global variable
-      createBookSuggestion(); // Call the function to create book suggestions after data is loaded
-    })
-    .catch((error) => {
-      console.error("Error fetching book suggestions:", error);
-    });
-}
-
 function searchBooks() {
   const searchBookInput = document.getElementById("title");
   const searchBookValue = searchBookInput.value.toLowerCase();
