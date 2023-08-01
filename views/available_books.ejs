@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Available Books</title>
   <script src="js/available_books.js" defer></script>
-  <link rel="stylesheet" href="styles/styles.css">
+ <link rel="stylesheet" href="styles/available_books.css">
   <link rel="stylesheet" href="styles/header.css">
   <script src="js/script.js" defer></script>
  
@@ -23,7 +23,8 @@
       <li><a href="/form">Borrow Books</a></li>
     </ul>
   </nav>
-  <main>    
+  <main>  
+      <h2>Find Your Books</h2>
     <div class="search-container">
       <input type="text" name="title" id="title" placeholder="Search Here" required list="book-dropdown">
       <datalist id="book-dropdown"></datalist>
@@ -33,7 +34,6 @@
   <div class="status-container"> <!-- New container for the status message -->
     <p class="status-message"></p>
   </div>
-    <h2>Available Books</h2>
     <table>
         <thead>
           <tr>

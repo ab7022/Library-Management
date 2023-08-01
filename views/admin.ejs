@@ -5,31 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - Library Organizer</title>
   <link rel="stylesheet" href="styles/admin.css">
-  <link rel="stylesheet" href="styles/header.css">
-  <script src="available_books.js"></script>
+  <script src="js/available_books.js"></script>
   <script src="js/admin.js" defer></script>
   <script src=""></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body onload = displayAvailableBooks(),createBookSuggestion()>
+<body>
   <header>
     <h1>Welcome Abdul!</h1>
   </header>
   <nav>
     <ul>
-      <li><a href="admin.html" class="active">Admin Dashboard</a></li>
-      <li><a href="library.html">Library Collection</a></li>
+      <li><a href="admin" class="active">Admin Dashboard</a></li>
+      <li><a href="available_books">Library Collection</a></li>
       <li><a href="borrowers.html">Borrowers</a></li>
       <li><a href="index">Logout</a></li>
     </ul>
   </nav>
   <main>
+    <div class="card-bg">
     <h2>Admin Dashboard</h2>
+
     <div class="card">
         <button class="admin-btn" id="add-books">Add Books</button>
         <button class="admin-btn" id="manage-books">Manage Books</button>
         <button class="admin-btn" id="manage-borrowers">Manage Borrowers</button>
     </div>
+  </div>
     <div id="card1">
       <h3>Add New Book</h3>
       <form id="addBookForm" action="/admin" method="POST">

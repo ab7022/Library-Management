@@ -9,7 +9,6 @@
   "version": "1.0.0",
   "description": "i will be learning how to display the data,redirect the user,show diffrent error pages,save the data in json format and show the same data in next page etc... ",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon app.js"
   },

@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Borrowed Books</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <script src="js/script.js" defer></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borrowed Books</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="stylesheet" href="styles/borrow_books.css">
+  <script src="js/borrowedbooks.js" defer></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+</head>
+<body onload="createBookSuggestion()">
+  <header>
+    <h1>Welcome to Our Library</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index">Home</a></li>
+      <li><a href="available_books">Available Books</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Borrow Books</h2>
     
-  </head>
-  <body onload="createBookSuggestion()">
-    <header>
-      <h1>Welcome to Our Library</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="index">Home</a></li>
-        <li><a href="available_books">Available Books</a></li>
-      </ul>
-    </nav>
-    <main>
-      <h2>Borrowe Books</h2>
-      
-      <form action="/form" method="post">
-        <label for="book-title">Book Title:</label>
-        <input
-          type="text"
-          id="book-title"
-          name="title"
-          required
-          list="book-dropdown"
-        />
-        <datalist id="book-dropdown"></datalist>
+    <form action="/form" method="post">
+      <label for="book-title">Book Title:</label>
+      <input
+        type="text"
+        id="book-title"
+        name="title"
+        required
+        list="book-dropdown"
+      />
+      <datalist id="book-dropdown"></datalist>
 
-        <label for="author-name">Author Name:</label>
-        <input type="text" id="author-name" name="author" required />
+      <label for="author-name">Author Name:</label>
+      <input type="text" id="author-name" name="author" required />
 
-        <label for="borrower">Your Name:</label>
-        <input type="text" id="borrower" name="borrower" required />
+      <label for="borrower">Your Name:</label>
+      <input type="text" id="borrower" name="borrower" required />
 
-        <label for="email-id">Email id:</label>
-        <input type="email" id="email-id" name="email-id" required />
+      <label for="email-id">Email id:</label>
+      <input type="email" id="email-id" name="email-id" required />
 
-        <input type="submit" value="Submit" id="submit-btn">
-    </main>
-    <footer>
-      <p>&copy; 2023 Your Library. All rights reserved.</p>
-    </footer>
-  </body>
+      <input type="submit" value="Submit" id="submit-btn">
+    </form>
+
+    <button id="guide-btn">Steps of borrowing books</button>
+    <div class="additional-info">
+      <h3>How to Borrow Books</h3>
+      <p>
+        To borrow books from our library, follow these simple steps:
+      </p>
+      <ol>
+        <li>Search for the book title in the search box above.</li>
+        <li>Enter the author's name to help us locate the correct book.</li>
+        <li>Enter your name and email id for borrowing verification.</li>
+        <li>Click the "Submit" button to complete the borrowing process.</li>
+        <li>Visit our library to pick up your borrowed books.</li>
+        <li>Enjoy reading and return the books on or before the due date.</li>
+      </ol>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2023 Your Library. All rights reserved.</p>
+  </footer>
+</body>
 </html>
