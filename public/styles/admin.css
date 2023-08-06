@@ -160,7 +160,7 @@ main h2{
     margin-bottom: 40px;
 }
 
-#card2 input[type="text"] {
+#card2 input[type="text"] ,#card3 input[type="text"]{
     font-size: 18px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -169,7 +169,7 @@ main h2{
     margin:30px 10px 30px 150px;
 }
 
-#card2 button#btn-search {
+#card2 button#btn-search, #card3 button#btn-search{
     display: inline-block;
     background-color: #003049;
     color: #fff;
@@ -319,4 +319,86 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+#backdrop{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+    display: none;
+    
+}
+#card4 {
+display: none;
+position: fixed;
+top: 20%;
+left: 28%; 
+width: 45%;  
+box-sizing: border-box;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+#card4 h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #003049;
+    text-transform: uppercase;
+}
+
+#card4 label {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #003049;
+    display: block;
+    text-align:center;
+}
+
+#card4 input[type="text"] {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   justify-items: center;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 10px;
+    margin-top: 30px;
+
+}
+.btns button{
+    color: #fff;
+    background-color: #0b5983;
+
+    padding: 15px 39px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+
+}
+#card4 button[type="submit"]{
+    background-color: #003049;
+    margin-left: 165px;
+}
+#card4 button:hover {
+    background-color: #f77f00;
 }

@@ -19,12 +19,27 @@
     </ul>
   </nav>
   <main>
-    <div class="confirmation-message">
-      <h2>Thank You for Submitting Your Entry!</h2>
-      <p>Your entry has been submitted successfully.</p>
-      <p>We hope you will be returing our book on or before time.</p>
-    </div>
+    <% if (latestBorrowedEntry) { %>
+      <div class="confirmation-message">
+        <h2>Thank You for Submitting Your Entry!</h2>
+        <p>Order ID: <%= latestBorrowedEntry.id %></p>
+        <p>Book Title: <%= latestBorrowedEntry.title %></p>
+        <p>Book Author: <%= latestBorrowedEntry.author %></p>
+        <p>Borrower Name: <%= latestBorrowedEntry.borrower %></p>
+        <p>Email ID: <%= latestBorrowedEntry['email-id'] %></p>
+        <p>Return Date: <%= latestBorrowedEntry['due-date'] %></p>
+        <p>Your entry has been submitted successfully.</p>
+        <p>We hope you will be returning our book on or before time.</p>
+      </div>
+      <a href="/index" class="cta">Back To Home</a>
+    <% } else { %>
+      <div class="confirmation-message">
+        <h2>No Books Borrowed Yet</h2>
+        <p>You haven't borrowed any books yet.</p>
+      </div>
+    <% } %>
   </main>
+  
   <footer>
     <p>&copy; 2023 Your Library. All rights reserved.</p>
   </footer>

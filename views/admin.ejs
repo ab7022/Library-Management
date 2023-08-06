@@ -1,129 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Library Organizer</title>
-  <link rel="stylesheet" href="styles/admin.css">
-  <script src="js/available_books.js"></script>
-  <script src="js/admin.js" defer></script>
-  <script src=""></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <h1>Welcome Abdul!</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="admin" class="active">Admin Dashboard</a></li>
-      <li><a href="available_books">Library Collection</a></li>
-      <li><a href="borrowers.html">Borrowers</a></li>
-      <li><a href="index">Logout</a></li>
-    </ul>
-  </nav>
-  <main>
-    <div class="card-bg">
-    <h2>Admin Dashboard</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Library Organizer</title>
+    <link rel="stylesheet" href="styles/admin.css" />
+    <script src="js/admin.js" defer></script>
+    <script src="js/editConfig.js" defer></script>
+    <script src="js/available_books.js" defer></script>
 
-    <div class="card">
-        <button class="admin-btn" id="add-books">Add Books</button>
-        <button class="admin-btn" id="manage-books">Manage Books</button>
-        <button class="admin-btn" id="manage-borrowers">Manage Borrowers</button>
-    </div>
-  </div>
-    <div id="card1">
-      <h3>Add New Book</h3>
-      <form id="addBookForm" action="/admin" method="POST">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome Abdul!</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="admin" class="active">Admin Dashboard</a></li>
+        <li><a href="available_books">Library Collection</a></li>
+        <li><a href="#">Borrowers</a></li>
+        <li><a href="index">Logout</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="card-bg">
+        <h2>Admin Dashboard</h2>
 
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required>
+        <div class="card">
+          <button class="admin-btn" id="add-books">Add Books</button>
+          <button class="admin-btn" id="manage-books">Manage Books</button>
+          <button class="admin-btn" id="manage-borrowers">
+            Manage Borrowers
+          </button>
+        </div>
+      </div>
+      <div id="card1">
+        <h3>Add New Book</h3>
+        <form id="addBookForm" action="/admin" method="POST">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
 
-        <button type="submit">Add Book</button>
-      </form>
-    </div>
-    
-    <div id="card2">
-        <input type="text" name="book-search" id="book-search" placeholder="Search Here" required 
-        list="book-dropdown">
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required />
+
+          <button type="submit">Add Book</button>
+        </form>
+      </div>
+
+      <div id="card2">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Search Here"
+          required
+          list="book-dropdown"
+        />
         <datalist id="book-dropdown"></datalist>
-        <button onclick="searchBooks()" id="btn-search">Search</button> 
+        <button id="btn-search">Search</button>
         <div class="space"></div>
-        <div class="status-container"> <!-- New container for the status message -->
-            <p class="status-message"></p>
+        <div class="status-container">
+          <!-- New container for the status message -->
+          <p class="status-message"></p>
         </div>
         <h2>Available Books</h2>
-       <!-- Table to display available books -->
-<table>
-    <thead>
-      <tr>
-        <th>Sr. No</th>
-        <th>Title</th>
-        <th class="author">Author</th>
-        <th>Status</th>
-        
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-     <% books.forEach(function(book, index) { %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= book.title %></td>
-                <td class="author"><%= book.author %></td>
-                <td class="<%= book.status === 'Borrowed' ? 'statusTrue' : 'statusFalse' %>"><%= book.status %></td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-              </tr>
+        <!-- Table to display available books -->
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Book Id</th>
+              <th>Title</th>
+              <th class="author">Author</th>
+              <th>Status</th>
+
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% books.forEach(function(book,index) { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= book.id %></td>
+              <td><%= book.title %></td>
+              <td class="author"><%= book.author %></td>
+              <td
+                class="<%= book.status === 'Borrowed' ? 'statusTrue' : 'statusFalse' %>"
+              >
+                <%= book.status %>
+              </td>
+              <td>
+                <!-- <button id="edit-btn">Edit</button>
+                <button id="dlt-btn">Delete</button> -->
+                <button class="delete-btn" data-id="<%= book.id %>">Delete</button>
+                <button id="edit-btn-<%= index %>">Edit</button>
+              </td>
+            </tr>
             <% }) %>
           </tbody>
-    </tbody>
-  </table>
-</div>
-        
+        </table>
+      </div>
 
-<div id="card3">
-    <h2>Book Return</h2>
-    <table id="borrowedBooksTable">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Borrower Name</th>
-          <th>Email id</th>
-          <th>Book Title</th>
-          <th>Order id</th>
-          <th>Return Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% borrowers.forEach(function(borrower, index) { %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td><%= borrower.borrower %></td>
-            <td><%= borrower['email-id'] %></td>
-            <td><%= borrower.title %></td>
-            <td><%= borrower.id %></td>
-            <td><%= borrower['due-date'] %></td>
-            <td>
-              <form action="/admin" method="post">
-                <input type="hidden" name="id" value="<%= borrower.id %>">
-                <button type="submit" class="return-btn">Return</button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
-  
-  </main>
-  <footer>
-    <p>&copy; 2023 Library Organizer. All rights reserved.</p>
-  </footer>
-</body>
+      <div id="card3">
+        <h2>Book Return</h2>
+        <input
+          type="text"
+          name="title"
+          id="searchOrderId"
+          placeholder="Search Here"
+          required
+          list="book-dropdown"
+        />
+        <datalist id="book-dropdown"></datalist>
+        <button id="btn-search">Search</button>
+
+        <table id="borrowedBooksTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Borrower Name</th>
+              <th>Email id</th>
+              <th>Book Title</th>
+              <th>Order id</th>
+              <th>Return Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% borrowers.forEach(function(borrower, index) { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= borrower.borrower %></td>
+              <td><%= borrower['email-id'] %></td>
+              <td><%= borrower.title %></td>
+              <td><%= borrower.id %></td>
+              <td><%= borrower['due-date'] %></td>
+              <td>
+                <button
+                  class="return-btn"
+                  data-borrower-id="<%= borrower.id %>"
+                >
+                  Return
+                </button>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div id="backdrop"></div>
+      <div id="card4">
+        <h3>Edit Book</h3>
+        <form id="addBookForm" action="/admin" method="POST">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required />
+          <div class="btns">
+            <button type="submit">Done</button>
+            <button id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Library Organizer. All rights reserved.</p>
+    </footer>
+  </body>
 </html>

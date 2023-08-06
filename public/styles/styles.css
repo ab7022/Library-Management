@@ -161,6 +161,8 @@ nav a:hover {
 
 .btn:hover {
     background-color: #f77f00;
+    border: #f77f00;
+    color: #f2f2f2;
 }
 
 .services {
@@ -226,4 +228,31 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+/* Interesting Facts Styles */
+.interesting-facts {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.interesting-facts h3 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.interesting-facts ul {
+    list-style-type: disc;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+button a {
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+}
+button a:hover{
+    border: none;
 }

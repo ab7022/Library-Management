@@ -1,0 +1,3 @@
+user will enter library id reg no and his name will be auto selected
+add unique id in json file 
+ediit button and submit should work with the modifying name functionality

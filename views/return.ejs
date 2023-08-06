@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Returned Books</title>
+  
+  <link rel="stylesheet" href="styles/borrow_books.css">
+  <script type="module" src="js/borrowedbooks.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Add your CSS styles here for the "return_books.css" file */
+    /* Same styles as the borrowing page with adjustments if needed */
+  
+    .extra-information {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    .extra-information h3 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #003049;
+      text-transform: uppercase;
+    }
+  
+    .extra-information p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #333;
+    }
+  
+    .extra-information ul {
+      list-style: disc;
+      margin-left: 30px;
+    }
+  
+    .extra-information li {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 5px;
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Library</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index">Home</a></li>
+      <li><a href="/form">Borrow Books</a></li>
+      <li><a href="available_books">Available Books</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Return Books</h2>
+    
+    <form action="/return" method="post">
+      <label for="book-title">Book Title:</label>
+      <input
+        type="text"
+        id="book-title"
+        name="title"
+        required
+        list="book-dropdown"
+      />
+      <datalist id="book-dropdown"></datalist>
+
+      <label for="author-name">Author Name:</label>
+      <input type="text" id="author-name" name="author" required />
+
+      <label for="borrower">Your Name:</label>
+      <input type="text" id="borrower" name="borrower" required />
+
+      <label for="email-id">Email id:</label>
+      <input type="email" id="email-id" name="email-id" required />
+
+      <label for="return-date">Return Date:</label>
+      <input type="text" id="return-date" name="return-date" required readonly />
+
+      <input type="submit" value="Submit" id="submit-btn">
+    </form>
+
+    <button id="guide-btn">Steps to Return Books</button>
+    <div class="additional-info">
+        <h3>How to Return Books</h3>
+        <ol>
+            <li>Locate the book title you want to return in the search box above.</li>
+            <li>Enter the author's name for book identification.</li>
+            <li>Provide your name and email id for return verification.</li>
+            <li>Choose the date you plan to return the book.</li>
+            <li>Click the "Submit" button to complete the return process.</li>
+            <li>Visit our library and return the books on or before the return date.</li>
+            <li>Thank you for returning the books! You are helping other readers access them.</li>
+        </ol>
+    </div>
+    <div class="extra-information">
+        <h3>Why Return Books On Time?</h3>
+        <p>
+          Returning books on time is essential to maintaining a well-functioning library system. Here are some reasons why timely returns matter:
+        </p>
+        <ul>
+          <li><strong>Helps Others:</strong> Returning books on time allows other readers to access and enjoy the same book you borrowed.</li>
+          <li><strong>Avoid Late Fees:</strong> Late returns may incur fines, and these resources could be better used to improve the library's services.</li>
+          <li><strong>Respect for Authors:</strong> Timely returns show respect for authors and their work, allowing more people to discover and learn from their writings.</li>
+          <li><strong>Support Sustainability:</strong> Efficient returns help reduce the environmental impact of book production and distribution.</li>
+          <li><strong>Encourages Responsibility:</strong> Practicing timely returns fosters a sense of responsibility and consideration for others in the community.</li>
+        </ul>
+    </div>
+    <div class="extra-information">
+
+        <h3>Book Care Tips</h3>
+        <p>
+          Taking care of the books you borrow ensures they remain in good condition for other readers. Here are some book care tips:
+        </p>
+        <ul>
+          <li><strong>Handle with Clean Hands:</strong> Avoid touching books with dirty or oily hands to prevent stains and damage.</li>
+          <li><strong>Use Bookmarks:</strong> Use bookmarks instead of folding the pages to keep the book intact.</li>
+          <li><strong>Store Properly:</strong> Keep the book away from direct sunlight, moisture, and extreme temperatures.</li>
+          <li><strong>No Food or Drinks:</strong> Refrain from eating or drinking near books to prevent spills and food debris.</li>
+          <li><strong>Report Damage:</strong> If you notice any damage to the book, please inform the library staff to ensure timely repairs.</li>
+        </ul>
+      </div>
+    </main>
+  <footer>
+    <p>&copy; 2023 Your Library. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

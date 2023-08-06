@@ -1,6 +1,16 @@
-
-
-function searchBooks() {
+async function fetchBookSuggestions() {
+  try {
+    const response = await fetch("./book_suggestions.json");
+    console.log("Response status:", response.status);
+    if (!response.ok) {
+      console.error("Failed to fetch book suggestions data.");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error:", error);
+    return [];
+  }}
+async function searchBooks() {
   const searchBookInput = document.getElementById("title");
   const searchBookValue = searchBookInput.value.toLowerCase();
 
@@ -11,11 +21,16 @@ function searchBooks() {
   if (existingStatus) {
     searchContainer.removeChild(existingStatus);
   }
+  const data = await fetchBookSuggestions();
 
-  const statusText = document.createElement("h3");
+  const statusText = document.createElement("h2");
+  statusText.classList.add("status-message");
+  const statusContainer = document.querySelector(".status-container");
+  statusContainer.innerHTML = ""; // Clear any previous status message
+  statusContainer.appendChild(statusText);
   const availableBooks = [];
 
-  bookSuggestions.forEach((book, index) => {
+  data.forEach((book, index) => {
     if (book.title.toLowerCase().includes(searchBookValue)) {
       availableBooks.push(index + 1); // Add the serial number to availableBooks array
     }
@@ -31,27 +46,31 @@ function searchBooks() {
   searchContainer.appendChild(statusText);
 }
 
-function createBookSuggestion() {
-  const bookDropdown = document.getElementById("book-dropdown");
-  const searchBookInput = document.getElementById("title"); // Move this line here
 
-  searchBookInput.addEventListener("input", function () {
-    bookDropdown.innerHTML = "";
-    const inputValue = searchBookInput.value.toLowerCase();
-    const filteredBooks = bookSuggestions.filter((book) =>
-      book.title.toLowerCase().startsWith(inputValue)
-    );
-    filteredBooks.forEach((book) => {
-      const option = document.createElement("option");
-      option.value = book.title;
-      bookDropdown.appendChild(option);
-    });
-  });
-}
-
-// Use DOMContentLoaded event to make sure the code runs after HTML content is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  initializeBookSuggestions(); // Call the function to fetch book suggestions data
+  createBookSuggestion(); // Call the function to fetch book suggestions data
   const btnSearch = document.getElementById("btn-search");
   btnSearch.addEventListener("click", searchBooks); // Add click event listener to search button
 });
+  
+    async function createBookSuggestion() {
+      const bookDropdown = document.getElementById("book-dropdown");
+      const searchBookInput = document.getElementById("title"); // Correct the id attribute
+  
+      const data = await fetchBookSuggestions();
+  
+      bookDropdown.innerHTML = "";
+      const inputValue = searchBookInput.value.toLowerCase();
+      const filteredBooks = data.filter((book) =>
+        book.title.toLowerCase().startsWith(inputValue)
+      );
+      filteredBooks.forEach((book) => {
+        const option = document.createElement("option");
+        option.value = book.title;
+        bookDropdown.appendChild(option);
+      });
+    }
+
+// Add an event listener to the book title input field
+const searchBookInput = document.getElementById("title"); // Correct the id attribute
+searchBookInput.addEventListener("input", createBookSuggestion);

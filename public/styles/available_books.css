@@ -96,6 +96,15 @@ h2{
 .space {
     height: 20px;
 }
+.status-container {
+  margin-top: 10px;
+}
+
+/* Additional style for the status message */
+.status-message {
+  color: #003049;
+margin-left: 20px;
+}
 
 tr th {
     font-size: 18px;
