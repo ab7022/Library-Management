@@ -21,7 +21,7 @@ header {
     background-color: #003049;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 header h1 {
@@ -33,7 +33,7 @@ header h1 {
 nav {
     background-color: #003049;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
 }
 
 nav ul {
@@ -56,7 +56,18 @@ nav a {
     padding: 10px 15px;
 
 }
+button{
+    color: #fff;
+    background: none;
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
+    list-style: none;
+    
+    display: flex;
+    justify-content: center;
 
+}
 nav a:hover {
     background-color: #f77f00;
 }
@@ -146,8 +157,11 @@ nav a:hover {
     font-size: 18px;
     margin: 0;
 }
-
-.btn {
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+.btn , .buttons a{
     display: inline-block;
     background-color: #003049;
     color: #fff;
@@ -256,3 +270,4 @@ button a {
 button a:hover{
     border: none;
 }
+

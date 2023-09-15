@@ -5,18 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Library Name</h1>
-        <nav>
-            <ul>
-                <li><a href="index">Home</a></li>
-                <li><a href="available_books">Books</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="admin">Admin Dashboard</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("include/header",{isAuth, isAdmin}) %>
     <main>
         <section class="hero">
             <h2>Welcome to Our Library!</h2>

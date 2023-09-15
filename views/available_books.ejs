@@ -6,6 +6,8 @@
   <title>Available Books</title>
   <!-- <script type="module" src="js/borrowedbooks.js" defer></script> -->
   <script src="js/available_books.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+
  <link rel="stylesheet" href="styles/available_books.css">
   <link rel="stylesheet" href="styles/header.css">
   <!-- <script src="js/script.js" defer></script> -->
@@ -15,15 +17,8 @@
 </head>
 <body >
 
-  <header>
-    <h1>Welcome to Our Library</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="/index">Home</a></li>
-      <li><a href="/form">Borrow Books</a></li>
-    </ul>
-  </nav>
+  <%- include("include/header",{isAuth, isAdmin}) %>
+
   <main>  
       <h2>Find Your Books</h2>
       <div class="search-container">

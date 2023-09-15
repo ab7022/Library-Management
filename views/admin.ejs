@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Library Organizer</title>
-    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
     <script src="js/admin.js" defer></script>
     <script src="js/editConfig.js" defer></script>
     <script src="js/available_books.js" defer></script>
@@ -22,8 +22,13 @@
       <ul>
         <li><a href="admin" class="active">Admin Dashboard</a></li>
         <li><a href="available_books">Library Collection</a></li>
+        <li><a href="/profile">Profile</a></li>
+
         <li><a href="#">Borrowers</a></li>
-        <li><a href="index">Logout</a></li>
+        <form action="/logout" method="post">
+          <!-- <li><a href="index">Logout</a></li> -->
+          <button>Logout</button>
+      </form>
       </ul>
     </nav>
     <main>
@@ -41,6 +46,7 @@
       <div id="card1">
         <h3>Add New Book</h3>
         <form id="addBookForm" action="/admin" method="POST">
+          <!-- <input type="hidden" name="_csrf" value="{{ csrfToken }}"> -->
           <label for="title">Title:</label>
           <input type="text" id="title" name="title" required />
 
@@ -97,7 +103,7 @@
                 <!-- <button id="edit-btn">Edit</button>
                 <button id="dlt-btn">Delete</button> -->
                 <button class="delete-btn" data-id="<%= book.id %>">Delete</button>
-                <button id="edit-btn-<%= index %>">Edit</button>
+                <button id="edit-btn" data-id="<%= book.id %>">Edit</button>
               </td>
             </tr>
             <% }) %>

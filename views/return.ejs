@@ -48,16 +48,8 @@
   
 </head>
 <body>
-  <header>
-    <h1>Welcome to Our Library</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="index">Home</a></li>
-      <li><a href="/form">Borrow Books</a></li>
-      <li><a href="available_books">Available Books</a></li>
-    </ul>
-  </nav>
+  <%- include("include/header",{isAuth, isAdmin}) %>
+
   <main>
     <h2>Return Books</h2>
     

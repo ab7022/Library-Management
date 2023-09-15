@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Authorised</title>
+  <!-- <script type="module" src="js/borrowedbooks.js" defer></script> -->
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+
+  <!-- <script src="js/script.js" defer></script> -->
+ 
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body >
+    <%- include("include/header",{isAuth, isAdmin}) %>
+
+    <section class="hero">
+        <h2>Profile Page</h2>
+        <p style="margin-top:20px">
+       This is Your profile page where you can see all your data which you have stored in our database
+        </p>
+        <p>Please return to the main menu</p>
+        <div style="margin-top: 30px;">
+            <a href="/index" class="cta">Home</a>
+            <a href="/admin" class="cta">Admin</a>
+        </div>
+
+    </section>
+</body>
+</html>

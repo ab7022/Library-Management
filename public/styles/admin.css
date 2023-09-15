@@ -50,8 +50,19 @@ nav a {
     font-size: 20px;
     padding: 10px 15px;
 }
+button{
+    color: #fff;
+    background: none;
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
+    list-style: none;
+    
+    display: flex;
+    justify-content: center;
 
-nav a:hover {
+}
+nav a:hover ,button:hover{
     background-color: #f77f00;
 }
 .card {

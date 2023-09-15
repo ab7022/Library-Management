@@ -9,15 +9,8 @@
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Our Library</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="index">Home</a></li>
-      <li><a href="available_books">Available Books</a></li>
-    </ul>
-  </nav>
+  <%- include("include/header",{isAuth, isAdmin}) %>
+
   <main>
     <% if (latestBorrowedEntry) { %>
       <div class="confirmation-message">

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Authenticated</title>
+  <!-- <script type="module" src="js/borrowedbooks.js" defer></script> -->
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+  <!-- <script src="js/script.js" defer></script> -->
+ 
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body >
+  <%- include("include/header",{isAuth, isAdmin}) %>
+
+    <section class="hero">
+        <h2>Not Authenticated</h2>
+        <p style="margin-top:20px">
+        You are not authenticated and therefore not allowed to acces this page!
+        </p>
+        <p>Please return to the main menu</p>
+        <div style="margin-top: 30px;">
+            <a href="/index" class="cta">Home</a>
+            <a href="/login" class="cta">Login</a>
+        </div>
+
+    </section>
+</body>
+</html>

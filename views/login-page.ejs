@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="js/login.js" defer></script>
+    <link rel="stylesheet" href="styles/login-page.css">
+
+
+    <title>Library Sign In</title>
+</head>
+<body>
+    <section class="form animated flipInX">
+        <h1>Welcome Back</h1>
+        <h2>Login To Your Account</h2>
+        <% if(inputData.hasError) {%>
+            <p id="input-error2"><%= inputData.message %></p>
+            <% } %>
+        <form class="loginbox" autocomplete="off" action="/login" method="POST">
+          <input placeholder="Email" type="text" id="email" name="email" required value="<%= inputData.email %>"> 
+          <input placeholder="Password" type="password" id="password" name="password" required value="<%= inputData.email %>">
+      <button id="submit">Login</button>
+      </form>
+      </section>
+</body>
+</html>
