@@ -9,14 +9,15 @@ const app = express();
 const cors = require("cors");
 const db = require("./dataa/database");
 const mongoDBStore = mongodbStore(session);
-const xss = require("xss")
+const xss = require("xss");
 
 const sessionStore = new mongoDBStore({
   uri: "mongodb://localhost:27017",
   databaseName: "library",
   collection: "sessions",
 });
-const csrf = require("csurf")
+
+const csrf = require("csurf");
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,12 +32,11 @@ app.use(
     saveUninitialized: false,
     store: sessionStore,
     cookie: {
-      maxAge: 60 * 1000,
+      maxAge: 60 * 1000 * 60,
     },
   })
 );
 
-// const csrf = require("csurf")
 app.use(async function (req, res, next) {
   const user = req.session.user;
   const isAuth = req.session.isAuthenticated;
@@ -54,11 +54,12 @@ app.use(async function (req, res, next) {
   res.locals.isAdmin = isAdmin;
   next();
 });
+
 async function startApp() {
   try {
-    await db.testConnection(); // Ensure the database connection is tested
-    await db.connectToDatabase(); // Ensure the database connection is established
-    app.listen(4000);
+    await db.testConnection();
+    await db.connectToDatabase();
+    app.listen(3000);
   } catch (error) {
     console.error("Error starting the app:", error);
   }
@@ -68,22 +69,24 @@ async function isAuthFunction(req, res) {
   const user = req.session.user;
   const isAuth = req.session.isAuthenticated;
 
-  // Check if userDoc exists and has the isAdmin property
   let isAdmin = false;
   if (user) {
-    const sessionID = req.sessionID; // Get the session ID of the current session
-    const userDoc = await db.getDb().collection("users").findOne({ _id: user.id });
+    const sessionID = req.sessionID;
+    const userDoc = await db
+      .getDb()
+      .collection("users")
+      .findOne({ _id: user.id });
 
     if (userDoc) {
-      console.log("userDoc:", userDoc); // Debug: Check the userDoc data
+      console.log("userDoc:", userDoc);
       isAdmin = userDoc.isAdmin;
     }
   }
 
-  console.log("isAdmin:", isAdmin); // Debug: Check the value of isAdmin
+  console.log("isAdmin:", isAdmin);
   res.locals.isAuth = isAuth;
   res.locals.isAdmin = isAdmin;
-  return { isAuth, isAdmin }; // Return both isAuth and isAdmin as an object
+  return { isAuth, isAdmin };
 }
 
 function readBooksData() {
@@ -99,7 +102,7 @@ function readBooksData() {
 function writeBooksData(books) {
   try {
     fs.writeFileSync(
-      "data/book_suggestions.json",
+      path.join(__dirname, "data", "book_suggestions.json"),
       JSON.stringify(books, null, 2),
       "utf8"
     );
@@ -147,8 +150,9 @@ app.get("/confirmBorrow", function (req, res) {
       "email-id": latestBorrowedBook["email-id"],
       "due-date": latestBorrowedBook["due-date"],
     };
+    const { isAuth, isAdmin } = isAuthFunction(req, res);
 
-    res.render("confirmBorrow", { latestBorrowedEntry }); // Pass the latest borrowed entry to the view
+    res.render("confirmBorrow", { latestBorrowedEntry:latestBorrowedBook ,isAdmin,isAuth});
   } catch (err) {
     console.error("Error processing data:", err);
     res.status(500).send("Internal Server Error");
@@ -159,12 +163,13 @@ app.get("/confirmAdd", function (req, res) {
   res.render("confirmAdd");
 });
 
-app.get("/return", function (req, res) {
-  res.render("return");
+app.get("/return", async function (req, res) {
+  const { isAuth, isAdmin } = await isAuthFunction(req, res);
+  res.render("return", { isAuth, isAdmin });
 });
 
+
 app.get("/admin", async function (req, res) {
-  // Check if the user is authenticated and the user object exists in the session
   if (!req.session.isAuthenticated || !req.session.user) {
     const { isAuth, isAdmin } = await isAuthFunction(req, res);
     return res.status(401).render("401", { isAuth, isAdmin });
@@ -173,7 +178,6 @@ app.get("/admin", async function (req, res) {
   const user = req.session.user;
 
   try {
-    // Attempt to retrieve user information from the database
     const userDoc = await db
       .getDb()
       .collection("users")
@@ -183,15 +187,13 @@ app.get("/admin", async function (req, res) {
       const { isAuth, isAdmin } = await isAuthFunction(req, res);
       return res.status(401).render("401", { isAuth, isAdmin });
     }
-    
+
     const isAdmin = userDoc.isAdmin;
     if (!isAdmin) {
       const { isAdmin, isAuth } = await isAuthFunction(req, res);
 
-      // If not an admin, you can handle it accordingly, for example, redirect to a 401 or 403 page
       return res.status(401).render("401", { isAuth, isAdmin });
     }
-    // Continue with rendering the admin page or perform other actions
     const borrowers = readJsonFile("borrowers.json");
     const bookSuggestions = readJsonFile("book_suggestions.json");
     const borrowedBooks = bookSuggestions.map((book) => {
@@ -209,23 +211,21 @@ app.get("/admin", async function (req, res) {
   } catch (error) {
     console.error("Error fetching user information:", error);
     const { isAuth, isAdmin } = await isAuthFunction(req, res);
-    res.status(401).render("401", { isAuth, isAdmin }); // Handle the error appropriately
+    res.status(401).render("401", { isAuth, isAdmin });
   }
 });
 
-app.get("/form",async function (req, res) {
-  var { isAdmin ,isAuth} = await isAuthFunction(req, res);
-  
+app.get("/form", async function (req, res) {
+  var { isAdmin, isAuth } = await isAuthFunction(req, res);
+
   res.render("borrowed_books", { isAuth: isAuth, isAdmin: isAdmin });
 });
-
 
 app.get("/index", async function (req, res) {
   var { isAuth, isAdmin } = await isAuthFunction(req, res);
 
   res.render("index", { isAuth: isAuth, isAdmin: isAdmin });
 });
-
 
 app.get("/", async function (req, res) {
   var { isAuth, isAdmin } = await isAuthFunction(req, res);
@@ -239,9 +239,9 @@ app.get("/book_suggestions.json", (req, res) => {
   res.json(JSON.parse(fileData));
 });
 
-app.get("/available_books",async function (req, res) {
+app.get("/available_books", async function (req, res) {
   const books = readJsonFile("book_suggestions.json");
-  var { isAdmin,isAuth } = await isAuthFunction(req, res);
+  var { isAdmin, isAuth } = await isAuthFunction(req, res);
 
   res.render("available_books", {
     books: books,
@@ -258,7 +258,6 @@ app.post("/form", function (req, res) {
     title: req.body.title,
     "due-date": req.body["due-date"],
   };
-  borrowedBooks.push(borrowedBook); // Add the new borrowed book entry to the array
   const borrowersFilePath = path.join(__dirname, "data", "borrowers.json");
   const existingUsers = readJsonFile("borrowers.json");
   existingUsers.push(borrowedBook);
@@ -272,7 +271,6 @@ app.post("/form", function (req, res) {
 });
 
 app.post("/admin", function (req, res) {
-
   const newBook = {
     title: xss(req.body.title),
     author: xss(req.body.author),
@@ -280,7 +278,7 @@ app.post("/admin", function (req, res) {
   const filePath = path.join(__dirname, "data", "book_suggestions.json");
   const bookSuggestions = readJsonFile("book_suggestions.json");
   bookSuggestions.push(newBook);
-  fs.writeFileSync(filePath, JSON.stringify(bookSuggestions));
+  fs.writeFileSync(filePath, JSON.stringify(bookSuggestions, null, 2), "utf8");
   res.redirect("/confirmAdd");
 });
 
@@ -332,7 +330,6 @@ app.post("/login", async function (req, res) {
       res.redirect("/login");
     });
     return;
-    // If the user doesn't exist, handle it appropriately (e.g., show an error message).
   }
 
   const passwordsAreEqual = await bcrypt.compare(
@@ -347,17 +344,14 @@ app.post("/login", async function (req, res) {
       email: enteredEmail,
       password: enteredPassword,
     };
-    // If the passwords don't match, handle it appropriately (e.g., show an error message).
     console.log("Incorrect password");
-
     req.session.save(function () {
       res.redirect("/login");
     });
     return;
   }
-  // Successfully logged in
   console.log("Logged in successfully");
-  // Add your logic for what to do after successful login (e.g., redirect to a dashboard).
+
   req.session.user = {
     id: existingUser._id,
     email: existingUser.email,
@@ -367,6 +361,7 @@ app.post("/login", async function (req, res) {
     res.redirect("/profile");
   });
 });
+
 app.post("/logout", function (req, res) {
   req.session.user = null;
   req.session.isAuthenticated = false;
@@ -388,17 +383,16 @@ app.get("/signup", function (req, res) {
   res.render("signup-page", { inputData: sessionInputData });
 });
 
-app.get("/profile",async function (req, res) {
+app.get("/profile", async function (req, res) {
   const user = req.session.user;
   const isAuth = req.session.isAuthenticated;
   if (!isAuth) {
     return res.status(401).render("401");
   }
   var { isAdmin } = await isAuthFunction(req, res);
-  
+
   res.render("profile-page", { isAuth: isAuth, isAdmin: isAdmin });
 });
-
 
 app.post("/signup", async function (req, res) {
   const userData = req.body;
@@ -409,7 +403,7 @@ app.post("/signup", async function (req, res) {
     !enteredEmail ||
     !enteredPassword ||
     !enteredEmail2 ||
-    enteredPassword.length < 5 || // Fix this condition, remove the negation
+    enteredPassword.length < 5 ||
     enteredEmail !== enteredEmail2 ||
     !enteredEmail.includes("@")
   ) {
@@ -454,7 +448,7 @@ app.post("/signup", async function (req, res) {
         const user = {
           email: enteredEmail,
           password: hashedPassword,
-          isAdmin:false
+          isAdmin: false,
         };
         console.log(user);
         await db.getDb().collection("users").insertOne(user);
@@ -467,14 +461,9 @@ app.post("/signup", async function (req, res) {
   }
 });
 
-app.use(function(error,req,res,next){
-  console.log(error)
-  res.render("500")
-})
 
-module.exports = app;
-
-app.get('/401', async (req, res) => {
+app.get("/401", async (req, res) => {
   var { isAuth, isAdmin } = await isAuthFunction(req, res);
-  res.render('401', { isAuth, isAdmin }); // Pass isAuth and isAdmin to the template
+  res.render("401", { isAuth, isAdmin });
 });
+module.exports = app;

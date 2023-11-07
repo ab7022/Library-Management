@@ -10,7 +10,6 @@
     "mongodb": "^4.17.1",
     "mongoose": "^6.12.0",
     "node": "^20.5.0",
-    "nodemon": "^3.0.1",
     "xss": "^1.0.14"
   },
   "name": "library",
@@ -18,8 +17,11 @@
   "description": "i will be learning how to display the data,redirect the user,show diffrent error pages,save the data in json format and show the same data in next page etc... ",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Abdul Bayees",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }

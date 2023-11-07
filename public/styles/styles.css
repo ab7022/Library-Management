@@ -271,3 +271,20 @@ button a:hover{
     border: none;
 }
 
+.facts-div{
+    background-color: #ececec;
+    border-radius: 5px;
+}
+
+.facts-div ul li{
+    list-style:circle;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin-left: 70px;
+}
+
+.facts-h1{
+    background-color: #969696;
+    border-radius: 3px;
+padding: 20px;}
