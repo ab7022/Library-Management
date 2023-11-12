@@ -9,19 +9,31 @@ The Library Project is a web application that allows users to view and interact 
 <a href="https://ibb.co/B48Kgzt"><img src="https://i.ibb.co/B48Kgzt/library-add.png" alt="library-add" border="0" width="25%"></a>
 <a href="https://ibb.co/B48Kgzt"><img src="https://i.ibb.co/B48Kgzt/library-add.png" alt="library-add" border="0" width="23%"></a>
 
-## Key-Features:
+## Key Features
 
-- View Available Books: Users can browse through a list of available books in the library. Each book is displayed with its title and author's name in a tabular format for easy readability.
+1. **View Available Books:**
+   - Browse a list of available books in a tabular format.
 
-- Search Functionality: The application offers a search bar that enables users to search for books by title. As the user types in the search query, the application provides real-time suggestions in the form of a dropdown list, making it easier to find the desired book.
+2. **Search Functionality:**
+   - Real-time suggestions as you type in the search bar.
+   - Dropdown list for search query suggestions.
 
-- Borrow Books: Users can borrow books from the library by filling out a simple form that includes their name and the title of the book they wish to borrow. The borrowed book information is stored and can be accessed later.
+3. **Borrow Books:**
+   - Fill out a simple form with your name and the book title you wish to borrow.
 
-- Availability Status: The application dynamically updates the availability status of each book. If a book is currently borrowed by a user, it is labeled as "Borrowed." Otherwise, it is labeled as "Available."
+4. **Availability Status:**
+   - Dynamic updates on the availability status of each book.
+   - Labels like "Borrowed" or "Available."
 
-- User-Friendly Interface: The user interface is designed to be intuitive and user-friendly, allowing users of all levels of computer literacy to navigate and interact with the application easily.
+5. **User-Friendly Interface:**
+   - Intuitive design for users of all computer literacy levels.
 
-- Responsive Design: The Library Project is designed to be responsive, ensuring that it adapts to different screen sizes and devices, providing a seamless user experience across desktops, tablets, and mobile phones.
+6. **Responsive Design:**
+   - Adapts to different screen sizes and devices for a seamless user experience.
+
+7. **Admin Features:**
+   - Add new books to the library.
+   - Manage borrowers, including the ability to view, add, or remove borrowers.
 
 ## Technologies Used:
 
@@ -36,3 +48,8 @@ The Library Project is a web application that allows users to view and interact 
 The Library Project is deployed on a web server, making it accessible to users through a web browser. The project can be hosted on a cloud platform or a web hosting service to ensure high availability and reliability.
 
 Overall, the Library Project offers a convenient and efficient way for users to explore and interact with a virtual library, enhancing the book borrowing experience and promoting a love for reading.
+
+
+
+
+
